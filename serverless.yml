@@ -1,0 +1,39 @@
+service: fastapi-mangum
+
+frameworkVersion: ">=3.0.1"
+
+provider:
+  name: aws
+  runtime: python3.8
+  logs:
+    httpApi: true
+  stage: dev
+  region: us-east-1
+
+functions:
+  githubAPI:
+    handler: serverless_wsgi.wsgi.handler
+    events:
+      - httpApi: ANY /
+      - httpApi: 'ANY /{proxy+}'
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+
+  serverless-offline:
+    host: 0.0.0.0
+    httpPort: 4000
+    printOutput: true
+
+package:
+  exclude:
+    - node_modules/**
+    - .venv/**
+    - .direnv/**
+    - poetry.lock
+    - package-lock.json
+
+plugins:
+  - serverless-python-requirements
+  - serverless-offline

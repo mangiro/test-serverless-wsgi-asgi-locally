@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "serverless-wsgi"
+version = "0.1.0"
+description = "An example of testing a serverless WSGI API locally."
+authors = ["Gabriel Rocha <gabrielmangi01@gmail.com>"]
+license = "MIT"
+readme = "README.rst"
+repository = "https://github.com/mangiro/test-serverless-wsgi-asgi-locally"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.73.0"
+mangum = "^0.12.3"
+toml = "^0.10.2"
+aws-lambda-powertools = "^1.24.2"
+uplink = "^0.9.6"
+
+[tool.poetry.dev-dependencies]
+ipdb = "^0.13.9"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
